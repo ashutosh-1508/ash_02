@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,45 +11,60 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('ElevatedButton Example'),
+          title: Text('ElevatedButton Custom Style Example'),
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ElevatedButton.icon(
-                icon: const Icon(Icons.account_circle_outlined),
-                label: const Text('button with icon'),
-                onPressed: () {
-                  print('Button Pressed');
-                },
-                //child: Text('Enabled Button'),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ElevatedButton(
+
+                onPressed:
+                     () {
+                   print('Enabled Button Pressed');
+                 },
+                style: ElevatedButton.styleFrom(
+
+                  backgroundColor: Colors.green, // Background color
+                  foregroundColor: Colors.white, // Text color
+                  shadowColor: Colors.green, // Shadow color
+                  elevation: 5, // Elevation
+                  shape:BeveledRectangleBorder(
+                    borderRadius: BorderRadius.horizontal(
+                      right: Radius.elliptical(10,10),
+                      left: Radius.elliptical(10, 10),
+                    ), // Rounded corners
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20), // Padding
+                ),
+                child: Text('Enabled Button'),
               ),
-              //const SizedBox(height: 20),
-              const ElevatedButton(
-                onPressed: null, // Disabled state
+              SizedBox(height: 20,width: 20,),
+              ElevatedButton(
+                onPressed: null,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey, // Background color
+                  foregroundColor: Colors.red, // Text color
+                ),
                 child: Text('Disabled Button'),
               ),
-              //const SizedBox(height: 20),
+              SizedBox(height: 20),
               ElevatedButton.icon(
                 onPressed: () {
                   print('Icon Button Pressed');
                 },
-                icon: const Icon(Icons.thumb_up),
-                label: const Text('Button with Icon'),
-              ), ElevatedButton.icon(
-                onPressed: () {
-                  print('Icon Button Pressed');
-                },
-                icon: const Icon(Icons.thumb_up),
-                label: const Text('Button with Icon'),
-              ), ElevatedButton.icon(
-                onPressed: () {
-                  print('Icon Button Pressed');
-                },
-
-                icon: const Icon(Icons.ac_unit),
-                label: const Text('Button with Icon'),
+                icon: Icon(Icons.thumb_up),
+                label: Text('Button with Icon'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange, // Background color
+                  foregroundColor: Colors.white, // Text color
+                  shadowColor: Colors.orangeAccent, // Shadow color
+                  elevation: 5, // Elevation
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0), // Rounded corners
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Padding
+                ),
               ),
             ],
           ),
