@@ -11,62 +11,83 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('ElevatedButton Custom Style Example'),
+          title: Center(child: Text('ElevatedButton Custom Style Example')),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-
-                onPressed:
-                     () {
-                   print('Enabled Button Pressed');
-                 },
-                style: ElevatedButton.styleFrom(
-
-                  backgroundColor: Colors.green, // Background color
-                  foregroundColor: Colors.white, // Text color
-                  shadowColor: Colors.green, // Shadow color
-                  elevation: 5, // Elevation
-                  shape:BeveledRectangleBorder(
-                    borderRadius: BorderRadius.horizontal(
-                      right: Radius.elliptical(10,10),
-                      left: Radius.elliptical(10, 10),
-                    ), // Rounded corners
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                  onTap: () {
+                    print("tap on my photo");
+                  },
+                  child: Container(
+                    child: Image.asset('assets/images/me.jpeg'),
+                    width: 300,
+                    height: 300,
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20), // Padding
                 ),
-                child: Text('Enabled Button'),
-              ),
-              SizedBox(height: 20,width: 20,),
-              ElevatedButton(
-                onPressed: null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey, // Background color
-                  foregroundColor: Colors.red, // Text color
-                ),
-                child: Text('Disabled Button'),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton.icon(
-                onPressed: () {
-                  print('Icon Button Pressed');
-                },
-                icon: Icon(Icons.thumb_up),
-                label: Text('Button with Icon'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange, // Background color
-                  foregroundColor: Colors.white, // Text color
-                  shadowColor: Colors.orangeAccent, // Shadow color
-                  elevation: 5, // Elevation
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0), // Rounded corners
+                SizedBox(height: 20),
+                ElevatedButton(
+                    onPressed: () {
+                      print('button clicked');
+                    },
+                    child: Text('login'),
+                    style: ElevatedButton.styleFrom(
+                        shadowColor: Colors.blue,
+                        elevation: 10,
+                        fixedSize: Size(200, 50))),
+                SizedBox(height: 20),
+                InkWell(
+                  onTap: () {
+                    print("tap on orange box");
+                  },
+                  child: Container(
+                    child: Center(child: Text("Ashutosh")),
+                    height: 300,
+                    width: 300,
+                    color: Colors.orange,
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Padding
                 ),
-              ),
-            ],
+                SizedBox(height: 20),
+                InkWell(
+                  onTap: () {
+                    print("tap on deadpool image");
+                  },
+                  child: Container(
+                    height: 300,
+                    width: 300,
+                    child: Image.network(
+                        'https://images.pexels.com/photos/1235706/pexels-photo-1235706.jpeg?auto=compress&cs=tinysrgb&w=600'),
+                  ),
+                ),
+                SizedBox(height: 20),
+                InkWell(
+                  onTap: () {
+                    print("tap on deadpool image");
+                  },
+                  child: Container(
+                    height: 300,
+                    width: 300,
+                    child: Image.network(
+                        'https://images.pexels.com/photos/1235706/pexels-photo-1235706.jpeg?auto=compress&cs=tinysrgb&w=600'),
+                  ),
+                ),
+                SizedBox(height: 20),
+                InkWell(
+                  onTap: () {
+                    print("tap on deadpool image");
+                  },
+                  child: Container(
+                    height: 300,
+                    width: 300,
+                    child: Image.network(
+                        'https://images.pexels.com/photos/1235706/pexels-photo-1235706.jpeg?auto=compress&cs=tinysrgb&w=600'),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
