@@ -1,5 +1,5 @@
-import 'package:ash_02/appBar2.dart';
 import 'package:flutter/material.dart';
+import 'package:ash_02/appBar2.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, // Remove debug banner
       home: IntroPage(),
     );
   }
@@ -21,21 +22,27 @@ class IntroPage extends StatelessWidget {
       appBar: AppBar(
         title: Center(child: Text('Intro Page')),
         backgroundColor: Colors.blue,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context); // Navigate back to previous screen
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => appBar2()),
+              );
+            },
+          ),
+        ],
       ),
       body: Container(
         color: Colors.lightBlueAccent,
-        child: Center(
-          child: ElevatedButton(
-            onPressed: (){
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context)=> appBar2(),)
-              );
-              print('Next Button clicked');
-            },
-            child: Text('Next'),
-          ),
-        ),
-
+        // Additional body content if needed
       ),
     );
   }
